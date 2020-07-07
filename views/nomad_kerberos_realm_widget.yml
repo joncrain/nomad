@@ -2,7 +2,7 @@ type: scrollbox
 widget_id: nomad-kerberos_realm-scrollbox-widget
 api_url: /module/nomad/get_list/kerberos_realm
 i18n_title: nomad.widget.kerberos_realm_title
-icon: fa-laptop
+icon: fa-ticket
 listing_link: /show/listing/nomad/nomad
 search_key: label
 badge: count
