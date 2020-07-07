@@ -1,0 +1,31 @@
+{
+    "column": {
+        "nomad_version": "NoMAD Version",
+        "nomad_login_version": "NoMAD Login Version",
+        "nomad_enabled": "NoMAD Enabled",
+        "nomad_login_enabled": "NoMAD Login Enabled",
+        "nomad_user": "NoMAD User",
+        "addomain": "ADDomain",
+        "kerberos_realm": "Kerberos Realm",
+        "use_keychain": "Use Keychain",
+        "local_password_sync": "Local Password Sync"
+    },
+    "listing": {
+        "title": "NoMAD"
+    },
+    "report": {
+        "title": "NoMAD"
+    },
+    "title": "NoMAD",
+    "widget": {
+        "nomad_version_title": "NoMAD Version",
+        "nomad_login_version_title": "NoMAD Login Version",
+        "nomad_enabled_title": "NoMAD Enabled",
+        "nomad_login_enabled_title": "NoMAD Login Enabled",
+        "nomad_user_title": "NoMAD User",
+        "addomain_title": "ADDomain",
+        "kerberos_realm_title": "Kerberos Realm",
+        "use_keychain_title": "Use Keychain",
+        "local_password_sync_title": "Local Password Sync"
+    }
+}

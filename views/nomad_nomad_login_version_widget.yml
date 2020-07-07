@@ -1,0 +1,8 @@
+type: scrollbox
+widget_id: nomad-nomad_login_version-scrollbox-widget
+api_url: /module/nomad/get_list/nomad_login_version
+i18n_title: nomad.widget.nomad_login_version_title
+icon: fa-laptop
+listing_link: /show/listing/nomad/nomad
+search_key: label
+badge: count

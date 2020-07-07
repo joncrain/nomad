@@ -1,0 +1,9 @@
+row1:
+    nomad_nomad_version: {  }
+    nomad_nomad_login_version: {  }
+    nomad_nomad_enabled: {  }
+    nomad_nomad_login_enabled: {  }
+    nomad_addomain: {  }
+    nomad_kerberos_realm: {  }
+    nomad_use_keychain: {  }
+    nomad_local_password_sync: {  }

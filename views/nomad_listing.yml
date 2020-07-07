@@ -1,0 +1,30 @@
+i18n_title: nomad.listing.title
+table:
+    -   column: machine.computer_name
+        i18n_header: listing.computername
+        formatter: clientDetail
+        tab_link: nomad
+    -   column: reportdata.serial_number
+        i18n_header: serial
+    -   column: nomad.nomad_version
+        i18n_header: nomad.column.nomad_version
+    -   column: nomad.nomad_login_version
+        i18n_header: nomad.column.nomad_login_version
+    -   column: nomad.nomad_enabled
+        i18n_header: nomad.column.nomad_enabled
+        formatter: binaryYesNo
+    -   column: nomad.nomad_login_enabled
+        i18n_header: nomad.column.nomad_login_enabled
+        formatter: binaryYesNo
+    -   column: nomad.nomad_user
+        i18n_header: nomad.column.nomad_user
+    -   column: nomad.addomain
+        i18n_header: nomad.column.addomain
+    -   column: nomad.kerberos_realm
+        i18n_header: nomad.column.kerberos_realm
+    -   column: nomad.use_keychain
+        i18n_header: nomad.column.use_keychain
+        formatter: binaryYesNo
+    -   column: nomad.local_password_sync
+        i18n_header: nomad.column.local_password_sync
+        formatter: binaryYesNo

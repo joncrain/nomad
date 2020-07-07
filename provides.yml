@@ -1,0 +1,29 @@
+client_tabs:
+    nomad:
+        view: nomad_tab
+        i18n: nomad.title
+listings:
+    nomad:
+        view: nomad_listing
+        i18n: nomad.listing.title
+reports:
+    nomad:
+        view: nomad_report
+        i18n: nomad.report.title
+widgets:
+    nomad_nomad_version:
+        view: nomad_nomad_version_widget
+    nomad_nomad_login_version:
+        view: nomad_nomad_login_version_widget
+    nomad_nomad_enabled:
+        view: nomad_nomad_enabled_widget
+    nomad_nomad_login_enabled:
+        view: nomad_nomad_login_enabled_widget
+    nomad_addomain:
+        view: nomad_addomain_widget
+    nomad_kerberos_realm:
+        view: nomad_kerberos_realm_widget
+    nomad_use_keychain:
+        view: nomad_use_keychain_widget
+    nomad_local_password_sync:
+        view: nomad_local_password_sync_widget
