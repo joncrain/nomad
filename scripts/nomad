@@ -21,8 +21,6 @@ def main():
     """Main"""
     # Create cache dir if it does not exist
     cachedir = '%s/cache' % os.path.dirname(os.path.realpath(__file__))
-    if not os.path.exists(cachedir):
-        os.makedirs(cachedir)
     separator = "="
     pl=FoundationPlist.readPlist("/Applications/NoMAD.app/Contents/Info.plist")
     nomad_version = pl['CFBundleShortVersionString']
@@ -40,7 +38,9 @@ def main():
     for mech in mechs:
         if "NoMADLogin" in mech:
             nomad_login_enabled = True
-
+        else:
+            nomad_login_enabled = False
+            
     # Write memory results to cache
     output_file = os.path.join(cachedir, 'nomad.txt')
     f = open(output_file, "w")
