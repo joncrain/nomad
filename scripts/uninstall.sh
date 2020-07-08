@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Remove nomad script
-rm -f "${MUNKIPATH}preflight.d/nomad.sh"
+rm -f "${MUNKIPATH}preflight.d/nomad"
 
 # Remove nomad.txt file
-rm -f "${MUNKIPATH}preflight.d/cache/nomad.txt"
+rm -f "${MUNKIPATH}preflight.d/cache/nomad.json"

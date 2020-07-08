@@ -3,6 +3,7 @@
 import subprocess
 import os
 import sys
+import json
 sys.path.insert(0, '/usr/local/munki')
 sys.path.insert(0, '/usr/local/munkireport')
 from Foundation import CFPreferencesCopyAppValue
@@ -21,18 +22,20 @@ def main():
     """Main"""
     # Create cache dir if it does not exist
     cachedir = '%s/cache' % os.path.dirname(os.path.realpath(__file__))
+    if not os.path.exists(cachedir):
+        os.makedirs(cachedir)
     separator = "="
-
+    data = {}
     try:
         pl=FoundationPlist.readPlist("/Applications/NoMAD.app/Contents/Info.plist")
-        nomad_version = pl['CFBundleShortVersionString']
+        data["nomad_version"] = pl['CFBundleShortVersionString']
     except:
-        nomad_version = "Not Installed"
+        data["nomad_version"] = "Not Installed"
     try:
         nl=FoundationPlist.readPlist("/Library/Security/SecurityAgentPlugins/NoMADLoginAD.bundle/Contents/Info.plist")
-        nomad_login_version = nl['CFBundleShortVersionString']
+        data["nomad_login_version"] = nl['CFBundleShortVersionString']
     except:
-        nomad_login_version = "Not Installed"
+        data["nomad_login_version"] = "Not Installed"
     try:
         cmd = ["/usr/bin/security", "authorizationdb", "read", "system.login.console"]
         proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -44,23 +47,21 @@ def main():
     mechs = authdb["mechanisms"]
     for mech in mechs:
         if "NoMADLogin" in mech:
-            nomad_login_enabled = True
+            data["nomad_login_enabled"] = True
         else:
-            nomad_login_enabled = False
+            data["nomad_login_enabled"] = False
+
+    data["nomad_user"] = get_pref_value('UserShortName', 'com.trusourcelabs.NoMAD')
+    data["addomain"] = get_pref_value('ADDomain', 'com.trusourcelabs.NoMAD')
+    data["kerberos_realm"] = get_pref_value('KerberosRealm', 'com.trusourcelabs.NoMAD')
+    data["nomad_enabled"] = int(get_pref_value('SignedIn', 'com.trusourcelabs.NoMAD'))
+    data["local_password_sync"] = int(get_pref_value('LocalPasswordSync', 'com.trusourcelabs.NoMAD'))
+    data["use_keychain"] = int(get_pref_value('UseKeychain', 'com.trusourcelabs.NoMAD'))
 
     # Write memory results to cache
-    output_file = os.path.join(cachedir, 'nomad.txt')
-    f = open(output_file, "w")
-    f.write("nomad_user %s %s\n" % (separator, get_pref_value('UserShortName', 'com.trusourcelabs.NoMAD')))
-    f.write("addomain %s %s\n" % (separator, get_pref_value('ADDomain', 'com.trusourcelabs.NoMAD')))
-    f.write("kerberos_realm %s %s\n" % (separator, get_pref_value('KerberosRealm', 'com.trusourcelabs.NoMAD')))
-    f.write("nomad_enabled %s %s\n" % (separator, int(get_pref_value('SignedIn', 'com.trusourcelabs.NoMAD'))))
-    f.write("local_password_sync %s %s\n" % (separator, int(get_pref_value('LocalPasswordSync', 'com.trusourcelabs.NoMAD'))))
-    f.write("use_keychain %s %s\n" % (separator, int(get_pref_value('UseKeychain', 'com.trusourcelabs.NoMAD'))))
-    f.write("nomad_version %s %s\n" % (separator, nomad_version))
-    f.write("nomad_login_version %s %s\n" % (separator, nomad_login_version))
-    f.write("nomad_login_enabled %s %s\n" % (separator, int(nomad_login_enabled)))
-    f.close()
-    
+    output_file = os.path.join(cachedir, 'nomad.json')
+    with open(output_file, 'w') as fp:
+        json.dump(data, fp, indent=4, sort_keys=True)
+
 if __name__ == "__main__":
     main()

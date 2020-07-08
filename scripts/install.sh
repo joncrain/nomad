@@ -12,7 +12,7 @@ if [ $? = 0 ]; then
 	chmod a+x "${MUNKIPATH}preflight.d/nomad"
 
 	# Set preference to include this file in the preflight check
-	setreportpref "nomad" "${CACHEPATH}nomad.txt"
+	setreportpref "nomad" "${CACHEPATH}nomad.json"
 
 else
 	echo "Failed to download all required components!"
