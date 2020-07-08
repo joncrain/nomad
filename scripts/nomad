@@ -47,16 +47,16 @@ def main():
     mechs = authdb["mechanisms"]
     for mech in mechs:
         if "NoMADLogin" in mech:
-            data["nomad_login_enabled"] = True
+            data["nomad_login_enabled"] = 1
         else:
-            data["nomad_login_enabled"] = False
+            data["nomad_login_enabled"] = 0
 
     data["nomad_user"] = get_pref_value('UserShortName', 'com.trusourcelabs.NoMAD')
     data["addomain"] = get_pref_value('ADDomain', 'com.trusourcelabs.NoMAD')
     data["kerberos_realm"] = get_pref_value('KerberosRealm', 'com.trusourcelabs.NoMAD')
-    data["nomad_enabled"] = int(get_pref_value('SignedIn', 'com.trusourcelabs.NoMAD'))
-    data["local_password_sync"] = int(get_pref_value('LocalPasswordSync', 'com.trusourcelabs.NoMAD'))
-    data["use_keychain"] = int(get_pref_value('UseKeychain', 'com.trusourcelabs.NoMAD'))
+    data["nomad_enabled"] = int(bool(get_pref_value('SignedIn', 'com.trusourcelabs.NoMAD')))
+    data["local_password_sync"] = int(bool(get_pref_value('LocalPasswordSync', 'com.trusourcelabs.NoMAD')))
+    data["use_keychain"] = int(bool(get_pref_value('UseKeychain', 'com.trusourcelabs.NoMAD')))
 
     # Write memory results to cache
     output_file = os.path.join(cachedir, 'nomad.json')
