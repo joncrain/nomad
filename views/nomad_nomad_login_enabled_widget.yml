@@ -5,9 +5,9 @@ i18n_title: nomad.widget.nomad_login_enabled_title
 icon: fa-toggle-on
 listing_link: /show/listing/nomad/nomad
 buttons:
-  - label: 0
+  - label: "0"
     i18n_label: off
     class: btn-danger
-  - label: 1
+  - label: "1"
     i18n_label: on
     class: btn-success
